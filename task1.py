@@ -1,14 +1,14 @@
-def rotate(list):
-    if list == []:
-        return list
+def rotate(lst):
+    if lst == []:
+        return lst
     else:
-        new_list = []
-        lenght = len(list)
-        the_last = list[lenght-1]
-        new_list.append(the_last)
-        new_list.extend(list)
-        new_list.pop(-1)
-        return new_list
+        new_lst = []
+
+        the_last = lst[-1]
+        new_lst.append(the_last)
+        new_lst.extend(lst)
+        new_lst.pop(-1)
+        return new_lst
 
 test =list (input().split(" "))
 print(rotate(test))
