@@ -1,3 +1,4 @@
+import unittest
 import time
 from memory_profiler import profile
 @profile
@@ -20,3 +21,13 @@ test = int(input())
 print (factorial(test))
 print(time.time() - start_time)
 
+class factorial_test(unittest.TestCase):
+    def test_5(self):
+        self.assertEqual(factorial(5),120)
+    def test_0(self):
+        self.assertEqual(factorial(0),1)
+    def test_values2(self):
+        self.assertEqual(factorial(3),6)
+
+if __name__ == "__main__":
+    unittest.main()
