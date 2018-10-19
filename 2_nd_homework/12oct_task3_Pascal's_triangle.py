@@ -8,10 +8,10 @@ def pascal(n):
             a[i].append(int(factorial(i)/factorial(j)/factorial(i-j)))
     return a
 
-n = int(input())
-z = pascal(n)
-for i in range (n):
-    print (z[i])
+#n = int(input())
+#z = pascal(n)
+#for i in range (n):
+#    print (z[i])
 
 class pascal_test(unittest.TestCase):
     def test_values(self):

@@ -10,8 +10,8 @@ def perfect_number (n):
     else:
         return False
 
-test = int(input())
-print (perfect_number(test))
+#test = int(input())
+#print (perfect_number(test))
 
 class perfect_number_test(unittest.TestCase):
     def test_true_values(self):

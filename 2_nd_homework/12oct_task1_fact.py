@@ -14,11 +14,12 @@ def factorial(n):
         for i in range (1, n+1):
             fact=fact*i
         return fact
+print(factorial(5000))
 
 start_time = time.time()
 #factorial(5)
-test = int(input())
-print (factorial(test))
+#test = int(input())
+#print (factorial(test))
 print(time.time() - start_time)
 
 class factorial_test(unittest.TestCase):
@@ -28,6 +29,7 @@ class factorial_test(unittest.TestCase):
         self.assertEqual(factorial(0),1)
     def test_values2(self):
         self.assertEqual(factorial(3),6)
+
 
 if __name__ == "__main__":
     unittest.main()
