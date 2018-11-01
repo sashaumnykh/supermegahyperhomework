@@ -12,23 +12,19 @@ print("Введите текст:")
 text = input()
 print("Укажите смещение:")
 offset = input()
-if (offset[1:].isdigit()) and (offset[0] == '-'):
-    offset = int(offset[1:])*(-1)
-    if offset < 26:
-        if action == 'e':
-            print(encrypt(offset, text))
-        if action == 'd':
-            print(decrypt(offset, text))
-    else:
-        raise ValueError("Значение смещения не должно превосходить 25!")
-elif offset[:].isdigit():
-    offset = int(offset)
-    if offset < 26:
-        if action == 'e':
-            print(encrypt(offset, text))
-        if action == 'd':
-            print(decrypt(offset, text))
-    else:
-        raise ValueError("Значение смещения не должно превосходить 25!")
-else:  # Слава Наташе Сенаторовой!!!!!!!!!!!!!!!!!
+
+if not (offset[1:].isdigit()) and (offset[0] == '-'):
+    if not offset[:].isdigit():
         raise ValueError('Введите целочисленное значение смещения!')
+else:
+    if (offset[1:].isdigit()) and (offset[0] == '-'):
+        offset = int(offset[1:]) * (-1)
+    elif offset[:].isdigit():
+        offset = int(offset)
+    if offset < 26:
+        if action == 'e':
+            print(encrypt(offset, text))
+        if action == 'd':
+            print(decrypt(offset, text))
+    else:
+        raise ValueError("Значение смещения не должно превосходить 25!")
