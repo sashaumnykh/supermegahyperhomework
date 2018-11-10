@@ -39,4 +39,3 @@ def derivative(poly):
         degree_indexes = ''
     return new_poly
 
-print(derivative('-3x^7 + 10x^5 - 4x^2 + 3'))
