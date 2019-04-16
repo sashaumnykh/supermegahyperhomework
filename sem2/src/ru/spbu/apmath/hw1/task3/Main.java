@@ -7,7 +7,7 @@ public class Main {
         // Узнаете песню??
         // Да, идею я тоже позаимствовала *неловко*
         // Но ведь она действительно классная!
-        ArrayList<String> lst = new ArrayList<>();
+        List<Integer> lst = new ArrayList<>();
         // int step = -2;
         lst.add("What's been happening in your world?");
         lst.add("What have you been up to?");
