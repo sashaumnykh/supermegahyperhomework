@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Rotator {
 
-    public static <T> ArrayList<T> rotate(ArrayList<T> lst, int step)
+    public static <T> ArrayList<T> rotate(ArrayList<T> lst)
     {
         List<Integer> newLst = new ArrayList<>();
         int s = lst.size();
