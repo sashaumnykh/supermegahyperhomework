@@ -8,7 +8,7 @@ public class Main {
         // Да, идею я тоже позаимствовала *неловко*
         // Но ведь она действительно классная!
         ArrayList<String> lst = new ArrayList<>();
-        int step = -2;
+        // int step = -2;
         lst.add("What's been happening in your world?");
         lst.add("What have you been up to?");
         lst.add("I heard that you fell in love");
