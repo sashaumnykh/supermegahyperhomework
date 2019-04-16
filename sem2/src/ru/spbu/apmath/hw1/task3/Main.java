@@ -1,6 +1,7 @@
 package ru.spbu.apmath.hw1.task3;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] x){
