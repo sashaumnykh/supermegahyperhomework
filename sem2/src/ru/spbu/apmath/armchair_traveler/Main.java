@@ -46,12 +46,13 @@ public class Main {
     private static JButton inputButton;
     private static String nextWord;
     private static String helpfulWord;
+    private static Boolean signal;
 
     public static void main (String [] args) throws IOException {
         gameWindow = new JFrame("Armchair traveler");
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int width = (int) screenSize.getWidth();
-        int height = (int) screenSize.getHeight();
+        int height = (int) screenSize.getHeight() - 40;
         gameWindow.setSize(width, height);
         gameWindow.setExtendedState(gameWindow.MAXIMIZED_BOTH);
         gameWindow.setDefaultCloseOperation(gameWindow.EXIT_ON_CLOSE);
@@ -79,6 +80,8 @@ public class Main {
     private static void levelChoiceScene(ActionEvent e)
     {
         lastChar = '\0';
+        used.clear();
+        signal = false;
 
         JButton level1 = new JButton();
         level1.setIcon(new ImageIcon(level1URL));
@@ -104,10 +107,10 @@ public class Main {
         level3.addActionListener(Main::game3level);
         level3.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        JLabel descr1 = new JLabel("Города России с численностью более 50 тысяч человек");
+        JLabel descr1 = new JLabel("Города России с численностью более 100 тысяч человек");
         descr1.setFont(new Font("Montserrat", Font.ITALIC, 13));
         descr1.setAlignmentX(Component.CENTER_ALIGNMENT);
-        JLabel descr2 = new JLabel("Города России с численностью более 100 тысяч человек");
+        JLabel descr2 = new JLabel("Города России с численностью более 50 тысяч человек");
         descr2.setFont(new Font("Montserrat", Font.ITALIC, 13));
         descr2.setAlignmentX(Component.CENTER_ALIGNMENT);
         JLabel descr3 = new JLabel("Столицы мира и города (известные мне)");
@@ -292,6 +295,7 @@ public class Main {
 
     private static void play(ActionEvent e)
     {
+
         city = inputField.getText();
         inputField.setText("");
         jPanel.updateUI();
@@ -304,9 +308,22 @@ public class Main {
                 lastChar = getLastChar(city);
                 jPanel.updateUI();
             }
-            else{ answerLabel.setText("Попробуйте еще раз :)");
-            return;
-            }
+            /*else if (signal){
+                { answerLabel.setText("Игра закончилась");
+                    return;
+                }
+            }*/
+            else {
+                if (signal) {
+                        answerLabel.setText("Игра закончилась");
+                        return;
+                    }
+                else{
+                        answerLabel.setText("Попробуйте еще раз :)");
+                        return;
+                    }
+
+                }
         }
         catch (IOException ex) { System.out.println("Что-то пошло не так :("); }
         jPanel.updateUI();
@@ -328,6 +345,7 @@ public class Main {
             if (number == 0){
                 answerLabel.setText("<html>Мне нечего сказать :(<br>Вы победили!</html>");
                 answerLabel.setFont(new Font("Montserrat", Font.ITALIC, 40));
+                signal = true;
             }
             /*if (answerLabel.getText() == "Мне нечего сказать :( Вы победили!"){
                 gameWindow.dispose();
@@ -344,6 +362,7 @@ public class Main {
                 if (isTheEnd(nextWord, used, level)){
                     answerLabel.setText("<html>" + nextWord + "<br/>Ха-ха, вы проиграли</html>");
                     answerLabel.setFont(new Font("Montserrat", Font.ITALIC, 40));
+                    signal = true;
                 }
                 /*if (answerLabel.getText() == "Ха-ха вы проиграли"){
                     gameWindow.dispose();
@@ -359,6 +378,10 @@ public class Main {
     {
         if (used.isEmpty()){
             answerLabel.setText("Еще рано для подсказки ;)");
+            answerLabel.setFont(new Font("Montserrat", Font.ITALIC, 30));
+        }
+        else if (signal){
+            answerLabel.setText("Игра закончилась, подсказки не нужны");
             answerLabel.setFont(new Font("Montserrat", Font.ITALIC, 30));
         }
         else {
